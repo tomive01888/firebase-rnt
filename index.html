@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Authentication</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/script.mjs"></script>
+  </head>
+  <body class="bg-gray-300">
+    <header class="w-full bg-amber-400 fixed top-0 left-0 right-0">
+      <nav class="flex flex-grow max-w-xl place-items-center m-auto">
+        <ul class="list-none flex flex-grow justify-center gap-2">
+          <li>
+            <a
+              href="./auth/login/index.html"
+              class="block p-2 w-20 text-center bg-amber-500 hover:bg-amber-600 cursor-pointer"
+              >Login</a
+            >
+          </li>
+          <li>
+            <a
+              href="./auth/register/index.html"
+              class="block p-2 w-20 text-center bg-amber-500 hover:bg-amber-600 cursor-pointer"
+              >Register</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="mt-20 min-h-3xl flex flex-grow flex-col max-w-2xl m-auto">
+      <h1>Welcome to the Homepage!</h1>
+      <p>Login if you wanna see what this page made with?</p>
+
+      <div id="homepage" class="hidden">
+        <img
+          id="firebase-logo"
+          src="https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png"
+          alt="Firebase Logo"
+        />
+        <button id="logout-button" class="block p-2 w-20 text-center bg-amber-500 hover:bg-amber-600 cursor-pointer">
+          Logout
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
