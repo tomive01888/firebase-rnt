@@ -4,30 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../src/styles.css" />
-
-    <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
-    <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
-    <script type="module" crossorigin src="/assets/script-BhwpGUYt.js"></script>
-    <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
-    <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <link rel="stylesheet" href="../src/auth.css" />
+    <script type="module" src="../src/main.mjs"></script>
   </head>
   <body>
-    <main>
-      <div>
-        <h2>Login</h2>
-        <input type="email" id="login-email" placeholder="Email" />
-        <input type="password" id="login-password" placeholder="Password" />
-        <button id="login-button">Login</button>
-        <a href="../register/index.html">Register here!</a>
+    <main class="bg-gray-200 flex justify-center items-center flex-col min-h-screen">
+      <div class="container" id="container">
+        <div class="form-container sign-up-container">
+          <form action="#" class="bg-white flex items-center justify-center flex-col px-12 h-full text-center">
+            <h1 class="text-bold m-0">Create Account</h1>
+            <!-- <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social">Google</a>
+              <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div> -->
+            <!-- <span class="text-xs">or use your email for registration</span> -->
+            <input type="email" placeholder="Email" id="register-email" class="bg-gray-50 border-0 py-3 px-4 w-full" />
+            <input
+              type="password"
+              placeholder="Password"
+              id="register-password"
+              class="bg-gray-50 border-0 py-3 px-4 w-full"
+            />
+            <button
+              id="register"
+              class="rounded-3xl font-white text-sm font-bold py-3 px-11 border-amber-700 bg-amber-500 active:scale-95 focus:outline-0"
+            >
+              Sign Up
+            </button>
+          </form>
+        </div>
+        <div class="form-container sign-in-container">
+          <form action="#" class="bg-white flex items-center justify-center flex-col gap-1 px-12 h-full text-center">
+            <h1 class="text-bold m-0">Sign in</h1>
+            <div class="flex gap-4">
+              <img src="../public/google_icon.ico" alt="Google icon" class="w-10 h-10" id="google-auth" />
+              <img src="../public/github_icon.ico" alt="Github icon" class="w-10 h-10" id="github-auth" />
+            </div>
+            <span class="text-xs">or use your account</span>
+            <input type="email" placeholder="Email" id="login-email" class="bg-gray-50 border-0 py-3 px-4 w-full" />
+            <input
+              type="password"
+              placeholder="Password"
+              id="login-password"
+              class="bg-gray-50 border-0 py-3 px-4 w-full"
+            />
+            <!-- <a href="#">Forgot your password?</a> -->
+            <button
+              id="login"
+              class="rounded-3xl font-white text-sm font-bold py-3 px-11 border-amber-700 bg-amber-500 active:scale-95 focus:outline-0"
+            >
+              Sign In
+            </button>
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1 class="text-bold m-0">Welcome Back!</h1>
+              <p class="text-sm font-extralight font">To keep connected with us please login with your personal info</p>
+              <button
+                class="bg-transparent border-1 border-white rounded-3xl font-white text-sm font-bold py-3 px-11 active:scale-95 focus:outline-0"
+                id="signIn"
+              >
+                Login
+              </button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1 class="text-bold m-0">Hello, Friend!</h1>
+              <p class="text-sm font-extralight font">Enter your personal details and start journey with us</p>
+              <button
+                class="bg-transparent border-1 border-white rounded-3xl font-white text-sm font-bold py-3 px-11 active:scale-95 focus:outline-0"
+                id="signUp"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-
       <div>
-        <h2>Register</h2>
-        <input type="email" id="register-email" placeholder="Email" />
-        <input type="password" id="register-password" placeholder="Password" />
-        <button id="register-button">Register</button>
-        <a href="../login/index.html">Login here!</a>
+        <img
+          src="https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png"
+          alt="Firebase logo"
+          class="mix-blend-darken w-24"
+        />
       </div>
     </main>
   </body>
