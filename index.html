@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simple Authentication</title>
+    <title>Firebase Test Noroff | Home</title>
+    <link rel="icon" href="./firebase_ico.ico" />
     <link rel="stylesheet" href="./src/style.css" />
     <script type="module" src="./src/main.mjs"></script>
   </head>
   <body class="bg-gray-300">
-    <header class="w-full bg-amber-400 fixed top-0 left-0 right-0">
-      <nav class="flex flex-grow max-w-xl place-items-center m-auto">
-        <a href="./auth/index.html">Go to auth</a>
+    <header class="bg-amber-400 fixed top-0 left-0 right-0">
+      <nav class="flex flex-grow justify-end max-w-xl place-items-center m-auto p-2">
+        <a href="./auth/index.html" class="rounded-lg py-3 px-8 font-bold bg-amber-500 text-xl">Go to auth</a>
       </nav>
     </header>
 
     <main class="mt-20 min-h-3xl flex flex-grow flex-col max-w-2xl m-auto">
-      <h1>Welcome to the Homepage!</h1>
-      <p>Login if you wanna see what this page made with?</p>
+      <h1 class="text-3xl font-bold">Welcome to the Homepage!</h1>
+      <p class="mt-8">Login if you wanna see what this page made with?</p>
 
       <div id="homepage" class="hidden">
         <img
