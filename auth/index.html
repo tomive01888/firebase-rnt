@@ -5,111 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firebase Test Noroff | Auth</title>
     <link rel="icon" href="../firebase_ico.ico" />
-    <link rel="stylesheet" href="../src/auth.css" />
-    <script type="module" src="../src/main.mjs"></script>
+    <link rel="stylesheet" href="../src/style.css" />
+    <script type="module" src="../src/auth.mjs"></script>
+    <script type="module" src="../src/js/firebaseProviderAuthHandler.mjs"></script>
   </head>
-  <body>
-    <header class="bg-amber-400 fixed top-0 left-0 right-0">
+  <body class="min-h-svh bg-gray-200">
+    <header class="bg-amber-400">
       <nav class="flex flex-grow justify-start max-w-xl place-items-center m-auto p-2">
         <a href="/" class="rounded-lg py-1 px-4 font-bold bg-amber-500 hover:bg-amber-600 text-xl cursor-pointer">
           &#11164; Go back home</a
         >
       </nav>
     </header>
-    <main class="bg-gray-200 flex justify-center items-center flex-col min-h-screen">
-      <div class="container" id="container">
-        <div class="form-container sign-up-container">
-          <form action="#" class="bg-white flex items-center justify-center flex-col px-12 h-full text-center">
-            <h1 class="text-bold m-0">Create Account</h1>
-            <input
-              aria-label="create new email"
-              type="email"
-              placeholder="Email"
-              id="register-email"
-              class="bg-gray-50 border-0 py-3 px-4 w-full"
-            />
-            <input
-              aria-label="create new password"
-              type="password"
-              placeholder="Password"
-              id="register-password"
-              class="bg-gray-50 border-0 py-3 px-4 w-full"
-            />
-            <button
-              id="register"
-              class="rounded-3xl font-white text-sm font-bold py-3 px-11 border-amber-700 bg-amber-500 active:scale-95 focus:outline-0"
-            >
-              Sign Up
-            </button>
-          </form>
-        </div>
-        <div class="form-container sign-in-container">
-          <form action="#" class="bg-white flex items-center justify-center flex-col gap-1 px-12 h-full text-center">
-            <h1 class="text-bold m-0">Sign in</h1>
-            <div class="flex gap-4">
-              <img
-                src="../public/google_icon.ico"
-                alt="Google icon"
-                class="w-10 h-10 cursor-pointer opacity-90 hover:opacity-100"
-                id="google-auth"
+    <main class="flex justify-start items-center flex-col pt-20">
+      <div class="gap-4 bg-white p-4 rounded-2xl flex flex-col flex-grow w-full min-w-xs max-w-xl max-h-fit shadow-2xl">
+        <!-- Main Title -->
+        <h1 class="text-4xl font-bold m-0 text-center">Get Started</h1>
+        <p class="text-gray-600 text-center">Create an account or sign in to continue.</p>
+
+        <!-- Register Form -->
+        <div>
+          <h2 class="text-xl font-semibold mb-2">Create a New Account</h2>
+          <p class="text-sm text-gray-500 mb-3">Fill in the details below to register.</p>
+
+          <fieldset class="border border-gray-300 rounded">
+            <legend class="ml-4 p-1">Register</legend>
+            <form action="#" class="p-3 flex flex-col gap-2">
+              <input
+                aria-label="create new email"
+                type="email"
+                placeholder="Email"
+                id="register-email"
+                class="bg-gray-50 border border-gray-300 p-1 w-full rounded-sm"
               />
-              <img
-                src="../public/github_icon.ico"
-                alt="Github icon"
-                class="w-10 h-10 cursor-pointer opacity-90 hover:opacity-100"
-                id="github-auth"
+              <input
+                aria-label="create new password"
+                type="password"
+                placeholder="Password"
+                id="register-password"
+                class="bg-gray-50 border border-gray-300 p-1 w-full rounded-sm"
               />
-            </div>
-            <span class="text-xs">or use your account</span>
-            <input
-              aria-label="enter your email"
-              type="email"
-              placeholder="Email"
-              id="login-email"
-              class="bg-gray-50 border-0 py-3 px-4 w-full"
-            />
-            <input
-              aria-label="enter your password"
-              type="password"
-              placeholder="Password"
-              id="login-password"
-              class="bg-gray-50 border-0 py-3 px-4 w-full"
-            />
-            <button
-              id="login"
-              class="rounded-3xl font-white text-sm font-bold py-3 px-11 border-amber-700 bg-amber-500 active:scale-95 focus:outline-0"
-            >
-              Sign In
-            </button>
-          </form>
+              <button
+                id="register-button"
+                class="rounded-3xl text-white text-sm font-bold py-3 px-11 border-amber-700 bg-amber-500 active:scale-95 focus:outline-0"
+              >
+                Sign Up
+              </button>
+            </form>
+          </fieldset>
         </div>
-        <div class="overlay-container absolute top-0 left-1/2 w-1/2 h-full overflow-hidden z-50">
-          <div class="overlay bg-amber-700 bg-no-repeat text-white -left-full h-full w-[200%] relative">
-            <div
-              class="overlay-panel absolute flex flex-col gap-2 items-center justify-center px-10 text-center top-0 h-full w-1/2 overlay-left"
-            >
-              <h1 class="text-bold m-0">Welcome Back!</h1>
-              <p class="text-sm font-extralight font">To keep connected with us please login with your personal info</p>
+
+        <!-- Login Form -->
+        <div>
+          <h2 class="text-xl font-semibold mb-2">Sign In to Your Account</h2>
+          <p class="text-sm text-gray-500 mb-3">Enter your credentials below to log in.</p>
+
+          <fieldset class="border border-gray-300 rounded">
+            <legend class="ml-4 p-1">Log in</legend>
+            <form action="#" class="p-3 flex flex-col gap-2">
+              <input
+                aria-label="enter your email"
+                type="email"
+                placeholder="Email"
+                id="login-email"
+                class="bg-gray-50 border border-gray-300 p-1 w-full rounded-sm"
+              />
+              <input
+                aria-label="enter your password"
+                type="password"
+                placeholder="Password"
+                id="login-password"
+                class="bg-gray-50 border border-gray-300 p-1 w-full rounded-sm"
+              />
               <button
-                class="bg-transparent border-1 border-white rounded-3xl font-white text-sm font-bold py-3 px-11 active:scale-95 focus:outline-0"
-                id="signIn"
+                id="login-button"
+                class="rounded-3xl text-white text-sm font-bold py-3 px-11 border-amber-700 bg-amber-500 active:scale-95 focus:outline-0"
               >
-                Login
+                Sign In
               </button>
-            </div>
-            <div
-              class="overlay-panel absolute flex flex-col gap-2 items-center justify-center px-10 text-center top-0 h-full w-1/2 overlay-right"
-            >
-              <h1 class="text-bold m-0">Hello, Friend!</h1>
-              <p class="text-sm font-extralight font">Enter your personal details and start journey with us</p>
-              <button
-                class="bg-transparent border-1 border-white rounded-3xl font-white text-sm font-bold py-3 px-11 active:scale-95 focus:outline-0"
-                id="signUp"
-              >
-                Register
-              </button>
-            </div>
-          </div>
+
+              <!-- Social Login -->
+              <div class="flex justify-center items-center gap-2 mt-3">
+                <span class="font-extralight text-gray-300">_________</span>
+                <span>Or login with</span>
+                <span class="font-extralight text-gray-300">_________</span>
+              </div>
+              <div class="flex justify-center items-center gap-4 mt-3">
+                <img
+                  src="../public/google_icon.ico"
+                  alt="Google icon"
+                  class="w-10 h-10 cursor-pointer opacity-90 hover:opacity-100 hover:scale-110 transition duration-300"
+                  id="google-auth"
+                />
+                <img
+                  src="../public/github_icon.ico"
+                  alt="Github icon"
+                  class="w-10 h-10 cursor-pointer opacity-90 hover:opacity-100 hover:scale-110 transition duration-300"
+                  id="github-auth"
+                />
+              </div>
+            </form>
+          </fieldset>
         </div>
       </div>
     </main>
