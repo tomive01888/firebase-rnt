@@ -1,8 +1,6 @@
-import { registerUser } from "./js/register.mjs";
-import { loginUser } from "./js/login.mjs";
-import { logoutUser } from "./js/logout.mjs";
+import { registerUser, loginUser, logoutUser } from "./js/firebaseAuthHandler.mjs";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./js/firebaseConfig.mjs";
+import { auth } from "./js/firebaseInit.mjs";
 
 // DOM Elements
 const registerEmail = document.getElementById("register-email");
@@ -18,11 +16,17 @@ const homepage = document.getElementById("homepage");
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("User is logged in:", user);
-    homepage.classList.remove("hidden");
+    if (homepage) {
+      homepage.classList.remove("hidden");
+      logoutButton.classList.remove("hidden");
+      console.log("User is logged in:", user);
+    }
   } else {
-    homepage.classList.add("hidden");
-    console.log("No user is logged in.");
+    if (homepage) {
+      homepage.classList.add("hidden");
+      logoutButton.classList.add("hidden");
+      console.log("No user is logged in.");
+    }
   }
 });
 
@@ -67,3 +71,34 @@ if (signInButton && container) {
     container.classList.remove("right-panel-active");
   });
 }
+
+export function copyToClipboard(event) {
+  const container = event.target.closest(".relative");
+  const codeBlock = container.querySelector("pre code");
+  const textToCopy = codeBlock.textContent;
+
+  navigator.clipboard
+    .writeText(textToCopy)
+    .then(() => {
+      alert("Copied to clipboard!");
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
+}
+
+// Add event listeners to all copy buttons
+document.querySelectorAll(".copy-button").forEach((button) => {
+  button.addEventListener("click", copyToClipboard);
+});
+
+document.getElementById("toggleButton").addEventListener("click", () => {
+  const codeBlock = document.getElementById("codeBlock");
+  if (codeBlock.classList.contains("h-0")) {
+    codeBlock.classList.remove("h-0");
+    codeBlock.classList.add("h-fit");
+  } else {
+    codeBlock.classList.remove("h-fit");
+    codeBlock.classList.add("h-0");
+  }
+});

@@ -7,28 +7,218 @@
     <link rel="icon" href="./firebase_ico.ico" />
     <link rel="stylesheet" href="./src/style.css" />
     <script type="module" src="./src/main.mjs"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   </head>
   <body class="bg-gray-300">
-    <header class="bg-amber-400 fixed top-0 left-0 right-0">
-      <nav class="flex flex-grow justify-end max-w-xl place-items-center m-auto p-2">
-        <a href="./auth/index.html" class="rounded-lg py-3 px-8 font-bold bg-amber-500 text-xl">Go to auth</a>
+    <header class="bg-amber-400 fixed top-0 left-0 right-0 z-[100]">
+      <nav class="flex flex-grow justify-end max-w-xl place-items-center m-auto p-2 gap-4">
+        <a
+          href="./auth/index.html"
+          class="rounded-lg py-1 px-4 font-bold bg-amber-500 hover:bg-amber-600 text-xl cursor-pointer"
+          >Go to auth</a
+        >
+        <button
+          id="logout-button"
+          class="rounded-lg py-1 px-4 font-bold bg-yellow-400 hover:bg-yellow-300 text-xl cursor-pointer"
+        >
+          Logout
+        </button>
       </nav>
     </header>
 
-    <main class="mt-20 min-h-3xl flex flex-grow flex-col max-w-2xl m-auto">
-      <h1 class="text-3xl font-bold">Welcome to the Homepage!</h1>
-      <p class="mt-8">Login if you wanna see what this page made with?</p>
+    <main class="mt-20 min-h-3xl flex flex-grow flex-col max-w-2xl m-auto gap-4">
+      <h1 class="text-4xl font-bold">Welcome to the Homepage!</h1>
+      <p>This website was made for introductional purposes and showcase the use of authorization</p>
+      <p>Login if you wanna see what secrets this page hold.</p>
 
-      <div id="homepage" class="hidden">
+      <section id="homepage" class="hidden">
         <img
           id="firebase-logo"
-          src="https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png"
+          src="https://firebase.google.com/static/downloads/brand-guidelines/SVG/logo-standard.svg"
           alt="Firebase Logo"
+          class="mix-blend-darken w-96"
         />
-        <button id="logout-button" class="block p-2 w-20 text-center bg-amber-500 hover:bg-amber-600 cursor-pointer">
-          Logout
-        </button>
-      </div>
+        <p>This website was made using Vite, Tailwind and Firebase</p>
+        <p>Vite to handle building.</p>
+        <p>Tailwind for handling style.</p>
+        <p>Firebase to handle authentication of several methods to login and hosting.</p>
+
+        <article class="mt-10 bg-white rounded-2xl p-3 flex flex-col gap-2">
+          <h2 class="font-bold text-3xl">Firebase Project Setup Guide</h2>
+          <p>1. For you to setup a Firebase project, you're going to need a Google account.</p>
+          <p>
+            2. Login to
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://console.firebase.google.com/"
+              target="_blank"
+              aria-label="Visit Firebase Console for developers"
+              >Firebase console</a
+            >.
+          </p>
+          <p>3. Start up a new project and follow the step-by-step to create your first project.</p>
+        </article>
+
+        <article class="mt-10 bg-white rounded-2xl p-3 flex flex-col gap-4">
+          <h2 class="font-bold text-3xl">Prepare VS Code and Firebase Initialization</h2>
+
+          <p>1. To install Firebase, we will start by adding it as a dependency.</p>
+
+          <p>2. Run the following command:</p>
+          <div class="container mx-auto">
+            <div class="relative bg-gray-700 text-white p-4 rounded-md shadow-md">
+              <pre class="overflow-x-auto mt-8 pb-2"><code>npm install firebase</code></pre>
+              <button
+                class="copy-button absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded-md flex items-center"
+              >
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+            </div>
+          </div>
+
+          <p>3. Now, go back to the Firebase Console.</p>
+
+          <p>4. Click the '⚙️ > Settings Icon > Project settings' and navigate to the 'General' tab.</p>
+
+          <p>
+            5. Scroll down until you see your Firebase configuration code. Copy it and create a new file named
+            <code>firebaseInit.mjs</code> in the root of your project.
+          </p>
+
+          <p>
+            6. Paste the copied Firebase configuration code into <code>firebaseInit.mjs</code> and ensure that you
+            export the <code>app</code> instance.
+          </p>
+          <span class="text-gray-700 italic text-sm bg-gray-200 p-2">
+            - Example: <code>export const app = initializeApp(firebaseConfig);</code>
+          </span>
+
+          <p>7. Import {getAuth} from 'firebase/auth' and create a new 'export const' called 'auth':</p>
+          <span class="text-gray-700 italic text-sm bg-gray-200 p-2">
+            <p>- Example:<code class="ml-4">import { getAuth } from "firebase/auth";</code></p>
+            <p>- Example:<code class="ml-4">export const auth = getAuth(app);</code></p>
+          </span>
+
+          <p>7. With this setup complete, your Firebase project is now ready to use! 🎉</p>
+          <span class="text-gray-200 italic text-sm bg-gray-700 p-2 mt-6">
+            - !Notice: Remember to replace all "value" with your actual Firebase configuration values.
+          </span>
+          <div>
+            <div class="container mx-auto">
+              <div class="relative bg-gray-200 text-gray-600 p-4 rounded-md shadow-md">
+                <pre id="codeBlock" class="overflow-hidden transition-all duration-500 ease-in-out mt-8 h-0">
+                  <code>
+// firebaseInit.mjs
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+          
+  const firebaseConfig = {
+      apiKey: "value",
+      authDomain: "value",
+      projectId: "value",
+      storageBucket: "value",
+      messagingSenderId: "value",
+      appId: "value"
+  };
+          
+export const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);</code></pre>
+                <button
+                  id="toggleButton"
+                  class="absolute top-2 right-2 bg-gray-200 hover:bg-gray-300 text-gray-700 cursor-pointer px-3 py-1 rounded-md flex items-center"
+                >
+                  <i class="fa-regular fa-eye mr-1"></i> Show example code
+                </button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
     </main>
+
+    <section>
+      <article class="w-full bg-white flex flex-col md:flex-row justify-center items-center p-18 mt-40">
+        <img
+          class="mix-blend-darken w-56"
+          src="https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png"
+          alt="Firebase logo no text"
+        />
+        <h2 class="text-2xl text-gray-700 font-bold text-center max-w-3xl">
+          Interested in how to add Authenticated logins and hosting?
+          <span class="text-amber-500">Read more below!</span>
+        </h2>
+      </article>
+      <div class="min-h-3xl flex flex-grow flex-col max-w-2xl m-auto gap-4">
+        <article class="mt-10 bg-white rounded-2xl p-3 flex flex-col gap-2">
+          <h3 class="text-2xl font-bold">Enabling Firebase authorization methods</h3>
+          <p>In this setup I will show you the basic email and password authentication method.</p>
+          <p>1. Navigate to the Firebase console.</p>
+          <p>2. On left hand side you can see 3 dropdown menus, 'Build' , 'Run' and 'Analytics'.</p>
+          <p>3. Click 'Build' to expand and click 'Authentication'.</p>
+
+          <p>4. Once there, first tab will show a list of registered users, enter tab two 'Sign-in method'.</p>
+          <p>
+            5. Now you can click the button that says 'Add new provider' and that should allow you to pick from many of
+            the various options Firebase offer from different providers.
+          </p>
+          <div class="text-gray-700 italic text-sm bg-gray-200 p-2 flex flex-col gap-3">
+            <p>Some of the providers they have:</p>
+            <div class="flex gap-2 text-2xl">
+              <i class="fa-brands fa-google"></i>
+              <i class="fa-brands fa-github"></i>
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-windows"></i>
+              <i class="fa-brands fa-apple"></i>
+            </div>
+            <p>And more!</p>
+          </div>
+        </article>
+
+        <article class="mt-10 bg-white rounded-2xl p-3 flex flex-col gap-4">
+          <h4 class="text-xl font-bold">Reference and video guides:</h4>
+          <div class="text-gray-700 italic text-sm bg-gray-200 p-2 flex flex-col gap-3">
+            <p>Google authentication</p>
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://www.youtube.com/watch?v=Uhbn1KmiNbg&t=389s"
+              >Video guide how to setup Google authentication</a
+            >
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://firebase.google.com/docs/auth/web/google-signin"
+              >Firebase authenticate using Google</a
+            >
+          </div>
+
+          <div class="text-gray-700 italic text-sm bg-gray-200 p-2 flex flex-col gap-3">
+            <p>Github authentication</p>
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://www.youtube.com/watch?v=K8JLZibcbp0"
+              >Video guide how to setup Github authentication</a
+            >
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://firebase.google.com/docs/auth/web/github-auth"
+              >Firebase authenticate using Github</a
+            >
+          </div>
+
+          <div class="text-gray-700 italic text-sm bg-gray-200 p-2 flex flex-col gap-3">
+            <p>Regular Email/Password</p>
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://www.youtube.com/watch?v=WM178YopjfI"
+              >Video guide how to setup basic register and login</a
+            >
+            <a
+              class="hover:underline font-light text-blue-400 hover:text-blue-500"
+              href="https://firebase.google.com/docs/auth/web/start"
+              >Firebase authenticate using basic email and password</a
+            >
+          </div>
+        </article>
+      </div>
+    </section>
   </body>
 </html>

@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+Installation-guide.md
 
 # Editor directories and files
 .vscode/*
