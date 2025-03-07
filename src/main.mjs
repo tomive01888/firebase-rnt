@@ -45,19 +45,21 @@ export function copyToClipboard(event) {
       console.error("Failed to copy: ", err);
     });
 }
-
-// Add event listeners to all copy buttons
 document.querySelectorAll(".copy-button").forEach((button) => {
   button.addEventListener("click", copyToClipboard);
 });
 
-document.getElementById("toggleButton").addEventListener("click", () => {
-  const codeBlock = document.getElementById("codeBlock");
-  if (codeBlock.classList.contains("h-0")) {
-    codeBlock.classList.remove("h-0");
-    codeBlock.classList.add("h-fit");
+export function showMoreInfo(event) {
+  const block = event.target.closest(".relative");
+  const blockContainer = block.querySelector("pre");
+  if (blockContainer.classList.contains("h-0")) {
+    blockContainer.classList.remove("h-0");
+    blockContainer.classList.add("h-fit");
   } else {
-    codeBlock.classList.remove("h-fit");
-    codeBlock.classList.add("h-0");
+    blockContainer.classList.remove("h-fit");
+    blockContainer.classList.add("h-0");
   }
+}
+document.querySelectorAll(".toggle-button").forEach((button) => {
+  button.addEventListener("click", showMoreInfo);
 });
